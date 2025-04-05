@@ -3,64 +3,59 @@
 namespace App\Http\Controllers;
 
 use App\Models\Escuela;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class EscuelaController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Mostrar listado de escuelas.
      */
     public function index()
     {
-        //
+        $escuelas = Escuela::all();
+        return view('escuelas.index', compact('escuelas'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Mostrar formulario para crear una escuela.
      */
     public function create()
     {
-        //
+        return view('escuelas.create');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Guardar una nueva escuela.
      */
     public function store(Request $request)
     {
-        //
+        Escuela::create($request->all());
+        return redirect()->route('escuelas.index');
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(Escuela $escuela)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
+     * Mostrar formulario de edición para una escuela.
      */
     public function edit(Escuela $escuela)
     {
-        //
+        return view('escuelas.edit', compact('escuela'));
     }
 
     /**
-     * Update the specified resource in storage.
+     * Actualizar una escuela existente.
      */
     public function update(Request $request, Escuela $escuela)
     {
-        //
+        $escuela->update($request->all());
+        return redirect()->route('escuelas.index');
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Eliminar una escuela.
      */
     public function destroy(Escuela $escuela)
     {
-        //
+        $escuela->delete();
+        return redirect()->route('escuelas.index');
     }
 }

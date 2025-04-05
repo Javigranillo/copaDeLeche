@@ -7,5 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Escuela extends Model
 {
-    use HasFactory;
+    protected $table = 'escuela'; // nombre exacto en tu base de datos
+
+    protected $fillable = ['matricula', 'nombreEscuela'];
+
+    public $timestamps = false; // si tu tabla no tiene campos created_at y updated_at
 }
