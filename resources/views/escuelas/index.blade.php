@@ -34,7 +34,7 @@
                         @method('DELETE')
                         <button onclick="return confirm('¿Seguro que querés eliminar esta escuela?')" class="btn btn-sm btn-danger">Eliminar</button>
                     </form>
-                    
+
                 </td>
             </tr>
         @endforeach
